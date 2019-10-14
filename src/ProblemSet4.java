@@ -27,10 +27,10 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        ps.sum();
+        // ps.sum();
         // ps.reverse();
         // ps.digits();
-        // ps.average();
+        ps.average();
         // ps.prime();
         // ps.fibonacci();
         // ps.factors();
@@ -84,6 +84,26 @@ public class ProblemSet4 {
 
     public void reverse() {
 
+      int posInt = 0;
+      char letterInString = 'A'; //need to initialize the char
+      System.out.println("");
+      do {
+        System.out.print("Positive integer: ");
+        posInt = in.nextInt();
+      } while (posInt<=0);
+      System.out.println("");
+      String posIntString = Integer.toString(posInt); //the int is changed into a string
+      int posIntLength = posIntString.length(); // finding the length of the string
+
+      for(int i = posIntLength - 1; i >= 0; i--){ //repeats for as long as the string
+        if(i==0){ //if the number is the last number, it will print a period instead of a comma
+          letterInString = posIntString.charAt(i);
+          System.out.print(letterInString + ".");
+        }else{
+          letterInString = posIntString.charAt(i);
+          System.out.print(letterInString + ", ");
+        }
+      }
     }
 
     /*
@@ -94,7 +114,30 @@ public class ProblemSet4 {
      */
 
     public void digits() {
+      int backToInt = 0;
+      int posIntOdd = 0;
+      char letterInStringOdd = 'a';
+      int sum = 0;
+      System.out.println("");
 
+      do{
+        System.out.print("Positive integer: ");
+        posIntOdd = in.nextInt();
+      }while(posIntOdd<=0);
+
+      String posIntOddString = Integer.toString(posIntOdd);
+      int posIntOddLength = posIntOddString.length();
+
+      for(int i = posIntOddLength - 1; i >= 0; i--){
+        letterInStringOdd = posIntOddString.charAt(i);
+        backToInt = Character.getNumericValue(letterInStringOdd);
+        if(backToInt%2==0){
+          sum = sum;
+        }else{
+          sum = sum + backToInt;
+        }
+      }
+      System.out.println("\n"+sum+".");
     }
 
     /*
@@ -106,7 +149,20 @@ public class ProblemSet4 {
      */
 
     public void average() {
-
+      System.out.println("");
+      int nonNeg = 0;
+      double sum = 0;
+      int i = 0;
+      do{
+        System.out.print("Non-negative integer: ");
+        nonNeg = in.nextInt();
+        if(nonNeg>0){ //without the if statement, the sum will run one last time also the i++
+          sum = sum + nonNeg;
+          i++;
+        }
+      }while(nonNeg>=0); //while the inputted values are higher than one, run this do while
+      double average = sum / i;
+      System.out.printf("\n%,.2f.", average);
     }
 
     /*
