@@ -30,9 +30,9 @@ public class ProblemSet4 {
         // ps.sum();
         // ps.reverse();
         // ps.digits();
-        ps.average();
+        // ps.average();
         // ps.prime();
-        // ps.fibonacci();
+        ps.fibonacci();
         // ps.factors();
         // ps.mario();
         // ps.luigi();
@@ -83,15 +83,17 @@ public class ProblemSet4 {
      */
 
     public void reverse() {
-
       int posInt = 0;
       char letterInString = 'A'; //need to initialize the char
       System.out.println("");
+
       do {
         System.out.print("Positive integer: ");
         posInt = in.nextInt();
       } while (posInt<=0);
+
       System.out.println("");
+
       String posIntString = Integer.toString(posInt); //the int is changed into a string
       int posIntLength = posIntString.length(); // finding the length of the string
 
@@ -104,6 +106,7 @@ public class ProblemSet4 {
           System.out.print(letterInString + ", ");
         }
       }
+
     }
 
     /*
@@ -172,7 +175,30 @@ public class ProblemSet4 {
      */
 
     public void prime() {
+      int primeNum = 0;
+      int remainder = 0;
+      boolean isPrime = true;
+      System.out.println("");
 
+      do{
+        System.out.print("Non-negative integer: ");
+        primeNum = in.nextInt();
+      }while(primeNum<=0);
+
+      for(int i = 2; i <= primeNum/2; i /*Starts at two since 0 and 1 won't be used to find the remainder, prime number
+        is divided by 2 to only since checking the modulus of the first half will be the same as the second hald*/
+        remainder =  primeNum % i;
+        if(remainder==0||primeNum==1){ /*if any of the remainers equal 1 or 0, there is another number that it is
+            divisable by*/
+          isPrime=false;
+          break;
+        } // else means prime is true
+      }
+      if(isPrime){
+        System.out.println("\nPrime.");
+      }else{
+        System.out.println("\nNot Prime.");
+      }
     }
 
     /*
@@ -183,7 +209,24 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
+      int fib = 0;
+      int numSeq = 0;
+      int n1 = 0;
+      int n2 = 1;
+      System.out.println("");
 
+      do{
+        System.out.print("Positive integer: ");
+        fib = in.nextInt();
+      }while(fib<=0&&fib>=92);
+
+      for(int i = 2; i <= fib; i++){
+        numSeq = n1 + n2;
+        n1 = n2;
+        n2 = numSeq;
+      }
+
+      System.out.println("\n" + numSeq + ".");
     }
 
     /*
