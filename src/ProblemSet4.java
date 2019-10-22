@@ -32,8 +32,8 @@ public class ProblemSet4 {
         // ps.digits();
         // ps.average();
         // ps.prime();
-        ps.fibonacci();
-        // ps.factors();
+        // ps.fibonacci();
+        ps.factors();
         // ps.mario();
         // ps.luigi();
         // ps.credit();
@@ -185,7 +185,7 @@ public class ProblemSet4 {
         primeNum = in.nextInt();
       }while(primeNum<=0);
 
-      for(int i = 2; i <= primeNum/2; i /*Starts at two since 0 and 1 won't be used to find the remainder, prime number
+      for(int i = 2; i <= primeNum/2; i++){ /*Starts at two since 0 and 1 won't be used to find the remainder, prime number
         is divided by 2 to only since checking the modulus of the first half will be the same as the second hald*/
         remainder =  primeNum % i;
         if(remainder==0||primeNum==1){ /*if any of the remainers equal 1 or 0, there is another number that it is
@@ -225,7 +225,6 @@ public class ProblemSet4 {
         n1 = n2;
         n2 = numSeq;
       }
-
       System.out.println("\n" + numSeq + ".");
     }
 
@@ -236,7 +235,34 @@ public class ProblemSet4 {
      */
 
     public void factors() {
+      double posNum = 0;
+      System.out.println("");
+      do{
+        System.out.print("Positive integer: ");
+        posNum = in.nextInt();
+      }while(posNum<=0);
+      System.out.println("");
 
+      for(int i = 1; i <= Math.sqrt(posNum); i++){
+
+        if(i<posNum/i-i*2){
+
+          if(posNum % i == 0){
+            System.out.print(i + ", ");
+            System.out.printf("%,.0f, ", posNum/i);
+          }
+
+        }else{
+
+          if(posNum % i == 0){
+            System.out.print(i + ", ");
+            System.out.printf("%,.0f.\n", posNum/i);
+          }
+
+        }
+
+
+      }
     }
 
     /*
