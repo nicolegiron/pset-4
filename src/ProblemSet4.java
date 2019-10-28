@@ -27,15 +27,15 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        // ps.sum();
-        // ps.reverse();
-        // ps.digits();
-        // ps.average();
-        // ps.prime();
-        // ps.fibonacci();
-        // ps.factors();
-        // ps.mario();
-        // ps.luigi();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
+        ps.average();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
+        ps.mario();
+        ps.luigi();
         ps.credit();
 
         in.close();
@@ -57,12 +57,12 @@ public class ProblemSet4 {
       int lowerBound = 0;
       int upperBound = 0;
       System.out.print("\n");
-      do {
+      do{
         System.out.print("Lower bound: ");
         lowerBound = in.nextInt();
         System.out.print("Upper bound: ");
         upperBound = in.nextInt();
-      } while (lowerBound>upperBound); //prints the lower and upper until a valid imput is provided
+      }while(lowerBound>upperBound); //prints the lower and upper until a valid imput is provided
 
       while(lowerBound<=upperBound){
         if(lowerBound%2==0){ //if statements checks if the lowerBound is an even number
@@ -72,7 +72,7 @@ public class ProblemSet4 {
           lowerBound++;
         }
       }
-        System.out.printf("\n%,.0f.", sum);
+        System.out.printf("\n%,.0f.\n", sum);
     }
 
     /*
@@ -86,21 +86,18 @@ public class ProblemSet4 {
       int posInt = 0;
       char letterInString = 'A'; //need to initialize the char
       System.out.print("\n");
-
-      do {
+      do{
         System.out.print("Positive integer: ");
         posInt = in.nextInt();
-      } while (posInt<=0);
+      }while(posInt<=0);
 
       System.out.print("\n");
-
       String posIntString = Integer.toString(posInt); //the int is changed into a string
       int posIntLength = posIntString.length(); // finding the length of the string
-
       for(int i = posIntLength - 1; i >= 0; i--){ //repeats for as long as the string
         if(i==0){ //if the number is the last number, it will print a period instead of a comma
           letterInString = posIntString.charAt(i);
-          System.out.print(letterInString + ".");
+          System.out.print(letterInString + ".\n");
         }else{
           letterInString = posIntString.charAt(i);
           System.out.print(letterInString + ", ");
@@ -130,7 +127,6 @@ public class ProblemSet4 {
 
       String posIntOddString = Integer.toString(posIntOdd);
       int posIntOddLength = posIntOddString.length();
-
       for(int i = posIntOddLength - 1; i >= 0; i--){
         letterInStringOdd = posIntOddString.charAt(i);
         backToInt = Character.getNumericValue(letterInStringOdd);
@@ -140,7 +136,7 @@ public class ProblemSet4 {
           sum = sum + backToInt;
         }
       }
-      System.out.println("\n"+sum+".");
+      System.out.println("\n"+sum+".\n");
     }
 
     /*
@@ -152,20 +148,19 @@ public class ProblemSet4 {
      */
 
     public void average() {
-      System.out.print("\n");
       int nonNeg = 0;
       double sum = 0;
       int i = 0;
       do{
         System.out.print("Non-negative integer: ");
         nonNeg = in.nextInt();
-        if(nonNeg>0){ //without the if statement, the sum will run one last time also the i++
+        if(nonNeg>=1){ //without the if statement, the sum will run one last time also the i++
           sum = sum + nonNeg;
           i++;
         }
-      }while(nonNeg>=0); //while the inputted values are higher than one, run this do while
+      }while(nonNeg>0); //while the inputted values are higher than one, run this do while
       double average = sum / i;
-      System.out.printf("\n%,.2f.", average);
+      System.out.printf("\n%,.2f.\n\n", average);
     }
 
     /*
@@ -178,8 +173,6 @@ public class ProblemSet4 {
       int primeNum = 0;
       int remainder = 0;
       boolean isPrime = true;
-      System.out.print("\n");
-
       do{
         System.out.print("Non-negative integer: ");
         primeNum = in.nextInt();
@@ -195,9 +188,9 @@ public class ProblemSet4 {
         } // else means prime is true
       }
       if(isPrime){
-        System.out.println("\nPrime.");
+        System.out.println("\nPrime.\n");
       }else{
-        System.out.println("\nNot Prime.");
+        System.out.println("\nNot Prime.\n");
       }
     }
 
@@ -213,19 +206,17 @@ public class ProblemSet4 {
       int numSeq = 0;
       int n1 = 0;
       int n2 = 1;
-      System.out.print("\n");
-
       do{
         System.out.print("Positive integer: ");
         fib = in.nextInt();
-      }while(fib<=0&&fib>=92);
+      }while(fib<=1||fib>=92);
 
       for(int i = 2; i <= fib; i++){
         numSeq = n1 + n2;
         n1 = n2;
         n2 = numSeq;
       }
-      System.out.println("\n" + numSeq + ".");
+      System.out.println("\n" + numSeq + ".\n");
     }
 
     /*
@@ -237,7 +228,7 @@ public class ProblemSet4 {
     public void factors() {
       double posNum = 0;
       int factorNum = 0;
-      System.out.print("\n");
+      double dividedNum = 0;
       do{
         System.out.print("Positive integer: ");
         posNum = in.nextInt();
@@ -245,16 +236,18 @@ public class ProblemSet4 {
       System.out.print("\n");
 
       for(int i = 1; i <= Math.sqrt(posNum); i++){
+        dividedNum=posNum/i;
         if(posNum % i == 0){
-          if(i<=Math.sqrt(posNum)-1){
+          if(i == 1){
             System.out.print(i + ", ");
-            System.out.printf("%,.0f, ", posNum/i);
+            System.out.printf("%,.0f", dividedNum);
           }else{
-            System.out.print(i + ", ");
-            System.out.printf("%,.0f.\n", posNum/i);
+            System.out.print(", " + i + ", ");
+            System.out.printf("%,.0f", dividedNum);
           }
         }
       }
+      System.out.print(".\n\n");
     }
 
     /*
@@ -268,13 +261,10 @@ public class ProblemSet4 {
       int height = 0;
       String initial = "##";
       String add = "#";
-      System.out.print("\n");
-
       do{
         System.out.print("Height: ");
         height = in.nextInt();
       }while(height<1||height>24);
-
 
       for(int i = 0; i < height; i++){
         if(i == 0){
@@ -283,7 +273,6 @@ public class ProblemSet4 {
             System.out.print(" ");
           }
           System.out.println("##");
-
         }else{
           for(int y = 1; y < height-i; y++){ /*Don't know why this line of code took FOREVER to figure out when I wrote
             the same exact thing above but the amount of spaces printed is the height subtracted by i */
@@ -293,6 +282,7 @@ public class ProblemSet4 {
           System.out.println(initial);
         }
       }
+      System.out.print("\n");
     }
 
     /*
@@ -306,7 +296,6 @@ public class ProblemSet4 {
       int lHeight = 0;
       String initial = "##";
       String add = "#";
-      System.out.print("\n");
       do{
         System.out.print("Height: ");
         lHeight = in.nextInt();
@@ -327,6 +316,7 @@ public class ProblemSet4 {
             System.out.println(initial + " " + initial);
         }
       }
+      System.out.println("");
     }
 
     /*
@@ -337,19 +327,25 @@ public class ProblemSet4 {
      */
 
     public void credit() {
-      int number;
+      long number;
       String notMul = "";
       String mul = "";
+      String multiply = "";
+      long sum = 0;
+      String amex = "37";
+      String masterCard = "5";
+      String visa = "4";
       System.out.println("");
       do{
         System.out.print("Number: ");
-        number = in.nextInt();
+        number = in.nextLong();
       }while(number<=0);
-      String numberS = String.valueOf(number);
+      String original = Long.toString(number);
+      String numberS = new StringBuffer(original).reverse().toString();
 
       for(int i = 0; i < numberS.length(); i++){ /*This for loop separates the numbers to multiply and the numbers not
           to multiply*/
-        int numberSN = Integer.parseInt(String.valueOf(numberS.charAt(i)));
+        long numberSN = Long.parseLong(String.valueOf(numberS.charAt(i)));
         if(i==0){
           notMul = numberS.substring(i, i+1);
         }else if(i==1){
@@ -360,10 +356,40 @@ public class ProblemSet4 {
           mul += numberS.substring(i, i+1);
         }
       }
-      System.out.println("notMul: " + notMul);
-      System.out.println("Mul: " + mul);
-      for(int x = 0; i < notMul.length(); i++){
-        int numberSN = Integer.parseInt(String.valueOf(notMul.charAt(i)));
+
+      for(int x = 0; x < mul.length(); x++){ /*Adds together all of the numbers that are supposed to be multiplied into
+          a string*/
+        long numberSN = Long.parseLong(String.valueOf(mul.charAt(x)));
+        long multipliedNumber = numberSN * 2;
+        String mNS = Long.toString(multipliedNumber);
+        multiply += mNS;
+      }
+
+      for(int y = 0; y < multiply.length(); y++){ /*Adding each number that was multiplied together*/
+        long addDigits = Long.parseLong(String.valueOf(multiply.charAt(y)));
+        sum += addDigits;
+      }
+
+
+      for(int z = 0; z < notMul.length(); z++){ /*Adding the final sum to the sum of the numbers not multiplied in the
+          beginning*/
+        long addDigit = Long.parseLong(String.valueOf(notMul.charAt(z)));
+        sum += addDigit;
+      }
+
+      long sumFinal = Long.parseLong(String.valueOf(sum));
+      if(sumFinal%10==0){
+        if(amex.equals(original.substring(0, 2))){
+          System.out.println("\nAmex.");
+        }else if (masterCard.equals(original.substring(0, 1))){
+          System.out.println("\nMasterCard.");
+        }else if (visa.equals(original.substring(0, 1))){
+          System.out.println("\nVisa.");
+        }else{
+          System.out.println("\nInvalid.");
+        }
+      }else{
+        System.out.println("\nInvalid.");
       }
     }
 }
